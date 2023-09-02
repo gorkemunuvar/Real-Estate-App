@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() {
+import 'core/app/app.dart';
+import 'core/app/init_helper.dart';
+
+void main() async {
+  await initDependencies();
   runApp(const FundaApp());
-}
-
-class FundaApp extends StatelessWidget {
-  const FundaApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp();
-  }
 }
