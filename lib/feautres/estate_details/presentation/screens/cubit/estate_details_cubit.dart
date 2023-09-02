@@ -20,6 +20,8 @@ class EstateDetailsCubit extends Cubit<EstateDetailsState> {
   Future<void> _fethEstateDetails() async {
     emit(state.copyWith(status: EstateDetailsStatus.loading));
 
+    await Future.delayed(const Duration(seconds: 2));
+
     final failureOrDetails = await _getEstateDetails();
     failureOrDetails.fold(
       (failure) => emit(state.copyWith(status: EstateDetailsStatus.failure)),
