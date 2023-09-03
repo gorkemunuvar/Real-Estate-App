@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate_app/feautres/estate_details/estate_details.dart';
 
-import 'section_title.dart';
+import '../../../common/common.dart';
 
 class DescriptionSection extends StatelessWidget {
   const DescriptionSection(
@@ -10,21 +11,16 @@ class DescriptionSection extends StatelessWidget {
 
   final String description;
 
-  static const _space = 16.0;
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SectionTitle(title: 'Description'),
-        const SizedBox(height: _space),
-        Text(
-          description,
-          style: const TextStyle(fontSize: 14),
-          maxLines: 15,
-        ),
-      ],
+    return Section(
+      title: 'Description',
+      child: Text(
+        maxLines: 13,
+        description,
+        overflow: TextOverflow.fade,
+        style: TextStyles.description,
+      ),
     );
   }
 }

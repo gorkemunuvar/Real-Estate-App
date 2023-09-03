@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
+import '../../../common/common.dart';
 import '../../estate_details.dart';
-import 'section_title.dart';
 
 class MainDetailsSection extends StatelessWidget {
   const MainDetailsSection({
@@ -11,40 +12,45 @@ class MainDetailsSection extends StatelessWidget {
 
   final EstateDetails estateDetails;
 
-  static const _space = 16.0;
+  static const _space = 6.0;
 
   @override
   Widget build(BuildContext context) {
-    final addressDetails = '${estateDetails.postcode} ${estateDetails.place}';
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SectionTitle(
-          title: estateDetails.address,
-        ),
-        const SizedBox(height: _space),
-        Text(
-          addressDetails,
-          style: const TextStyle(fontSize: 14),
-        ),
-        const SizedBox(height: _space),
-        _OtherDetails(
-          residentalArea: estateDetails.residentalArea,
-          parcelArea: estateDetails.parcelArea,
-        ),
-        const SizedBox(height: _space),
-        Text(
-          estateDetails.price.toString(),
-          style: const TextStyle(fontSize: 14),
-        ),
-      ],
+    return Section(
+      title: estateDetails.address,
+      titleTextStyle: TextStyles.sectionTitle.copyWith(fontSize: 22),
+      spaceBetween: _space,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '${estateDetails.postcode} ${estateDetails.place}',
+            style: TextStyles.mainGrey,
+          ),
+          const SizedBox(height: _space),
+          _SquareDetails(
+            residentalArea: estateDetails.residentalArea,
+            parcelArea: estateDetails.parcelArea,
+          ),
+          const SizedBox(height: _space * 2),
+          Text(
+            '€${formatPrice(estateDetails.price)}',
+            style: TextStyles.sectionTitle,
+          ),
+        ],
+      ),
     );
+  }
+
+  ///Splits the numbers by commas(,)
+  String formatPrice(double price) {
+    final formatter = NumberFormat('#,##,###,000');
+    return formatter.format(price);
   }
 }
 
-class _OtherDetails extends StatelessWidget {
-  const _OtherDetails({
+class _SquareDetails extends StatelessWidget {
+  const _SquareDetails({
     required this.residentalArea,
     required this.parcelArea,
   });
@@ -58,13 +64,23 @@ class _OtherDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        const Icon(
+          Icons.crop_square,
+          color: AppColors.iconGrey,
+        ),
+        const SizedBox(width: 4.0),
         Text(
-          residentalArea.toString(),
-          style: const TextStyle(fontSize: 14),
+          '${residentalArea.toInt().toString()} m\u00b2',
+          style: TextStyles.main,
         ),
         const SizedBox(width: _space),
+        const Icon(
+          Icons.home_outlined,
+          color: AppColors.iconGrey,
+        ),
+        const SizedBox(width: 4.0),
         Text(
-          parcelArea.toString(),
+          '${parcelArea.toInt().toString()} m\u00b2',
           style: const TextStyle(fontSize: 14),
         ),
       ],

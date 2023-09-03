@@ -47,7 +47,7 @@ class _DetailsView extends StatelessWidget {
 
   final EstateDetails estateDetails;
 
-  static const _space = 32.0;
+  static const _padding = EdgeInsets.symmetric(horizontal: 16, vertical: 32);
 
   @override
   Widget build(BuildContext context) {
@@ -57,19 +57,37 @@ class _DetailsView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ImagesSection(estateDetails.imageUrls.first),
-            const SizedBox(height: _space),
-            MainDetailsSection(estateDetails: estateDetails),
-            const SizedBox(height: _space),
-            DescriptionSection(estateDetails.description),
-            const SizedBox(height: _space),
-            LocationSection(
-              latitude: estateDetails.latitude,
-              longitude: estateDetails.longitude,
+            Padding(
+              padding: _padding,
+              child: _Details(estateDetails),
             ),
-            const SizedBox(height: _space),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _Details extends StatelessWidget {
+  const _Details(this.estateDetails);
+
+  final EstateDetails estateDetails;
+
+  static const _space = 32.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        MainDetailsSection(estateDetails: estateDetails),
+        const SizedBox(height: _space),
+        DescriptionSection(estateDetails.description),
+        const SizedBox(height: _space),
+        LocationSection(
+          latitude: estateDetails.latitude,
+          longitude: estateDetails.longitude,
+        ),
+      ],
     );
   }
 }
