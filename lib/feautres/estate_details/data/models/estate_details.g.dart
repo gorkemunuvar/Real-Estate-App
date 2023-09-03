@@ -6,10 +6,11 @@ part of 'estate_details.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-EstateDetailsModel _$EstateDetailsModelFromJson(Map<String, dynamic> json) =>
-    EstateDetailsModel(
+EstateDetailsModel _$EstateDetailsModelFromJson(Map<String, dynamic> json) => EstateDetailsModel(
       id: json['InternalId'] as String,
       address: json['Adres'] as String,
+      place: json['Plaats'] as String,
+      postcode: json['Postcode'] as String,
       residentalArea: (json['WoonOppervlakte'] as num).toDouble(),
       parcelArea: (json['PerceelOppervlakte'] as num).toDouble(),
       price: (json['Koopprijs'] as num).toDouble(),

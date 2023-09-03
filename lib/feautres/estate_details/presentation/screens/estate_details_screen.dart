@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../common/common.dart';
 
 import '../../../../core/injection/injection.dart';
-import '../widgets/widgets.dart';
+import '../../../common/common.dart';
+import '../../estate_details.dart';
 import 'cubit/estate_details_cubit.dart';
 
 class EstateDetailsScreen extends StatelessWidget {
@@ -33,7 +33,7 @@ class _View extends StatelessWidget {
         if (showLoading) {
           return const LoadingWidget();
         } else if (status.isSuccess) {
-          return const _DetailsView();
+          return _DetailsView(state.details!);
         }
 
         return const FailedWidget();
@@ -43,27 +43,29 @@ class _View extends StatelessWidget {
 }
 
 class _DetailsView extends StatelessWidget {
-  const _DetailsView();
+  const _DetailsView(this.estateDetails);
+
+  final EstateDetails estateDetails;
 
   static const _space = 32.0;
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ImagesSection(),
-          SizedBox(height: _space),
-          MainDetailsSection(),
-          SizedBox(height: _space),
-          DescriptionSection(),
-          SizedBox(height: _space),
-          FeaturesSection(),
-          SizedBox(height: _space),
-          LocationSection(),
-          SizedBox(height: _space),
-        ],
+    return SingleChildScrollView(
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ImagesSection(estateDetails.imageUrls.first),
+            const SizedBox(height: _space),
+            MainDetailsSection(estateDetails: estateDetails),
+            const SizedBox(height: _space),
+            DescriptionSection(estateDetails.description),
+            const SizedBox(height: _space),
+            const LocationSection(),
+            const SizedBox(height: _space),
+          ],
+        ),
       ),
     );
   }

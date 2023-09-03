@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
-const mockImagePath = 'http://cloud.funda.nl/valentina_media/179/406/791_groot.jpg';
-
 class ImagesSection extends StatelessWidget {
-  const ImagesSection({super.key});
+  const ImagesSection(
+    this.url, {
+    super.key,
+  });
+
+  final String url;
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(mockImagePath);
+    return Image.network(url);
   }
 }

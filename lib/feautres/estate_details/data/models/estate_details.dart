@@ -7,11 +7,12 @@ class EstateDetailsModel {
   const EstateDetailsModel({
     required this.id,
     required this.address,
+    required this.place,
+    required this.postcode,
     required this.residentalArea,
     required this.parcelArea,
     required this.price,
     required this.description,
-    // required this.listedSince,
     required this.latitude,
     required this.longitude,
     required this.imageUrls,
@@ -25,6 +26,12 @@ class EstateDetailsModel {
   @JsonKey(name: 'Adres')
   final String address;
 
+  @JsonKey(name: 'Plaats')
+  final String place;
+
+  @JsonKey(name: 'Postcode')
+  final String postcode;
+
   @JsonKey(name: 'WoonOppervlakte')
   final double residentalArea;
 
@@ -36,10 +43,6 @@ class EstateDetailsModel {
 
   @JsonKey(name: 'VolledigeOmschrijving')
   final String description;
-
-  // TODO: Add if needed.
-  // @JsonKey(name: 'listedSince')
-  // final String listedSince;
 
   @JsonKey(name: 'WGS84_X')
   final double latitude;
