@@ -4,10 +4,10 @@ import 'bloc_observer.dart';
 import '../injection/injection.dart';
 import '../logger/logger.dart';
 
+///Initializes all dependencies and configurations.
 Future<void> initDependencies() async {
   WidgetsFlutterBinding.ensureInitialized();
   AppLogger.init();
   configureDependencies();
-  //TODO: delete when logging is not needed.
   Bloc.observer = FundaBlocObserver();
 }

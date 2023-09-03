@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../logger/logger.dart';
 
+///[BlocObserver] that logs all bloc and cubit events.
+///Helpful for debugging to see which state changes are happening and when.
 class FundaBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
