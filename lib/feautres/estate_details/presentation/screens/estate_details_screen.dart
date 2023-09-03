@@ -56,7 +56,7 @@ class _DetailsView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ImagesSection(estateDetails.imageUrls.first),
+            ImagesSection(estateDetails.imageUrls),
             Padding(
               padding: _padding,
               child: _Details(estateDetails),
