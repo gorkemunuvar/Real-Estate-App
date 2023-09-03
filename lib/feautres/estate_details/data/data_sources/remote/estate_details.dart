@@ -12,20 +12,37 @@ abstract interface class IEstateDetailsRemoteDataSource {
 
 @Injectable(as: IEstateDetailsRemoteDataSource)
 class EstateDetailsRemoteDataSource implements IEstateDetailsRemoteDataSource {
-  static const _estateId = 'b9b5be58-48d9-4559-9e9b-faa027cdc59d';
-  static const _secondTestId = '8c604272-ea64-424a-88ae-1133731e2c53';
-
   @override
   Future<EstateDetailsModel> getEstateDetails() async {
-    const url = '${ApiConstants.baseUrl}/feeds/Aanbod.svc/json/detail/${ApiSecrets.apiKey}/koop/$_estateId/';
+    final estateId = await _getRandomEstateId();
+    final url = '${ApiConstants.baseUrl}/feeds/Aanbod.svc/json/detail/${ApiSecrets.apiKey}/koop/$estateId/';
 
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode != 200) {
-      Exception('Failed to load estate details');
+      Exception('Failed to load estate details.');
     }
 
     final decodedJson = jsonDecode(response.body);
     return EstateDetailsModel.fromJson(decodedJson);
+  }
+
+  Future<String> _getRandomEstateId() async {
+    const city = 'amsterdam';
+    const url = '${ApiConstants.baseUrl}/feeds/Aanbod.svc/json/${ApiSecrets.apiKey}/?type=koop&zo=/$city';
+
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode != 200) {
+      Exception('Failed to call search api.');
+    }
+
+    final decodedJson = jsonDecode(response.body);
+    final estates = decodedJson['Objects'] as List;
+
+    estates.shuffle();
+    final randomEstateId = estates.first['Id'] as String;
+
+    return randomEstateId;
   }
 }
