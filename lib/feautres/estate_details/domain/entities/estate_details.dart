@@ -15,7 +15,7 @@ class EstateDetails extends Equatable {
     required this.longitude,
   });
 
-  final int id;
+  final String id;
   final String address;
   final double residentalArea;
   final double parcelArea;

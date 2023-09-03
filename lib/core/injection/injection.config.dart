@@ -36,7 +36,7 @@ _i1.GetIt $initGetIt(
     environmentFilter,
   );
   gh.factory<_i3.IEstateDetailsRemoteDataSource>(
-      () => _i3.EstateDetailsDataSource());
+      () => _i3.EstateDetailsRemoteDataSource());
   gh.factory<_i4.IEstateDetailsRepository>(() =>
       _i5.EstateDetailsRepository(gh<_i3.IEstateDetailsRemoteDataSource>()));
   gh.factory<_i6.GetEstateDetails>(

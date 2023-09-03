@@ -19,7 +19,7 @@ class EstateDetailsModel {
   factory EstateDetailsModel.fromJson(Map<String, dynamic> json) => _$EstateDetailsModelFromJson(json);
 
   @JsonKey(name: 'InternalId')
-  final int id;
+  final String id;
 
   @JsonKey(name: 'Adres')
   final String address;

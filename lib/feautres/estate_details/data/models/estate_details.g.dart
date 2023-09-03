@@ -8,7 +8,7 @@ part of 'estate_details.dart';
 
 EstateDetailsModel _$EstateDetailsModelFromJson(Map<String, dynamic> json) =>
     EstateDetailsModel(
-      id: json['InternalId'] as int,
+      id: json['InternalId'] as String,
       address: json['Adres'] as String,
       residentalArea: (json['WoonOppervlakte'] as num).toDouble(),
       parcelArea: (json['PerceelOppervlakte'] as num).toDouble(),

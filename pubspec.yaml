@@ -17,6 +17,7 @@ dependencies:
   json_annotation: 4.8.1
   injectable: 2.3.0
   dartz: 0.10.1
+  http: 1.1.0
 
 dev_dependencies:
   flutter_test:
