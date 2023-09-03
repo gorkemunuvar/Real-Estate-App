@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'estate_details.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class EstateDetailsModel {
   const EstateDetailsModel({
     required this.id,
@@ -14,6 +14,7 @@ class EstateDetailsModel {
     // required this.listedSince,
     required this.latitude,
     required this.longitude,
+    required this.imageUrls,
   });
 
   factory EstateDetailsModel.fromJson(Map<String, dynamic> json) => _$EstateDetailsModelFromJson(json);
@@ -36,6 +37,7 @@ class EstateDetailsModel {
   @JsonKey(name: 'VolledigeOmschrijving')
   final String description;
 
+  // TODO: Add if needed.
   // @JsonKey(name: 'listedSince')
   // final String listedSince;
 
@@ -44,4 +46,28 @@ class EstateDetailsModel {
 
   @JsonKey(name: 'WGS84_Y')
   final double longitude;
+
+  @_NestedMediaConverter()
+  @JsonKey(name: 'Media')
+  final List<String> imageUrls;
+}
+
+class _NestedMediaConverter implements JsonConverter<List<dynamic>, List<String>> {
+  const _NestedMediaConverter();
+
+  @override
+  List<String> fromJson(List<dynamic> medias) {
+    return medias.map((media) {
+      final mediaItems = media['MediaItems'] as List;
+      final mediaItem = mediaItems.length >= 3 ? mediaItems[2] : mediaItems[0];
+      final imageUrl = mediaItem['Url'].toString();
+
+      return imageUrl;
+    }).toList();
+  }
+
+  @override
+  List<String> toJson(List<dynamic> object) {
+    return object.map((e) => e.toString()).toList();
+  }
 }

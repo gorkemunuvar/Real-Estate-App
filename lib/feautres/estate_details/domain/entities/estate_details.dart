@@ -13,6 +13,7 @@ class EstateDetails extends Equatable {
     // required this.listedSince,
     required this.latitude,
     required this.longitude,
+    required this.imageUrls,
   });
 
   final String id;
@@ -24,6 +25,7 @@ class EstateDetails extends Equatable {
   // final String listedSince;
   final double latitude;
   final double longitude;
+  final List<String> imageUrls;
 
   factory EstateDetails.fromModel(EstateDetailsModel model) {
     return EstateDetails(
@@ -36,6 +38,7 @@ class EstateDetails extends Equatable {
       // listedSince: model.listedSince,
       latitude: model.latitude,
       longitude: model.longitude,
+      imageUrls: model.imageUrls,
     );
   }
 
@@ -50,5 +53,6 @@ class EstateDetails extends Equatable {
         // listedSince,
         latitude,
         longitude,
+        imageUrls,
       ];
 }

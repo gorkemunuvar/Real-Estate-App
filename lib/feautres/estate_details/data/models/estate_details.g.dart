@@ -16,16 +16,5 @@ EstateDetailsModel _$EstateDetailsModelFromJson(Map<String, dynamic> json) =>
       description: json['VolledigeOmschrijving'] as String,
       latitude: (json['WGS84_X'] as num).toDouble(),
       longitude: (json['WGS84_Y'] as num).toDouble(),
+      imageUrls: const _NestedMediaConverter().fromJson(json['Media'] as List),
     );
-
-Map<String, dynamic> _$EstateDetailsModelToJson(EstateDetailsModel instance) =>
-    <String, dynamic>{
-      'InternalId': instance.id,
-      'Adres': instance.address,
-      'WoonOppervlakte': instance.residentalArea,
-      'PerceelOppervlakte': instance.parcelArea,
-      'Koopprijs': instance.price,
-      'VolledigeOmschrijving': instance.description,
-      'WGS84_X': instance.latitude,
-      'WGS84_Y': instance.longitude,
-    };
