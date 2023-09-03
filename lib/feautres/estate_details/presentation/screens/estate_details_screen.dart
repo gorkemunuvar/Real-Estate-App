@@ -62,7 +62,10 @@ class _DetailsView extends StatelessWidget {
             const SizedBox(height: _space),
             DescriptionSection(estateDetails.description),
             const SizedBox(height: _space),
-            const LocationSection(),
+            LocationSection(
+              latitude: estateDetails.latitude,
+              longitude: estateDetails.longitude,
+            ),
             const SizedBox(height: _space),
           ],
         ),
