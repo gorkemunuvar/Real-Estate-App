@@ -11,9 +11,9 @@ class EstateDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocProvider(
-        create: (context) => getIt<EstateDetailsCubit>()..init(),
+    return BaseScreen(
+      child: BlocProvider(
+        create: (_) => getIt<EstateDetailsCubit>()..init(),
         child: const _View(),
       ),
     );
@@ -51,18 +51,16 @@ class _DetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ImagesSection(estateDetails.imageUrls),
-            Padding(
-              padding: _padding,
-              child: _Details(estateDetails),
-            ),
-          ],
-        ),
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ImagesSection(estateDetails.imageUrls),
+          Padding(
+            padding: _padding,
+            child: _Details(estateDetails),
+          ),
+        ],
       ),
     );
   }

@@ -12,11 +12,9 @@ class EstateImagesScreen extends StatelessWidget {
   final List<String> imageUrls;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: _View(imageUrls: imageUrls),
-      ),
+  Widget build(BuildContext context) {h
+    return BaseScreen(
+      child: _View(imageUrls: imageUrls),
     );
   }
 }
