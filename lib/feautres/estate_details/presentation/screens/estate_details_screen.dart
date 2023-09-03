@@ -85,6 +85,8 @@ class _Details extends StatelessWidget {
           latitude: estateDetails.latitude,
           longitude: estateDetails.longitude,
         ),
+        const SizedBox(height: _space),
+        const ShowRandomEstateButton(),
       ],
     );
   }

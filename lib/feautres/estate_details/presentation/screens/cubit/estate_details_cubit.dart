@@ -14,10 +14,10 @@ class EstateDetailsCubit extends Cubit<EstateDetailsState> {
   final GetEstateDetails _getEstateDetails;
 
   Future<void> init() async {
-    await _fethEstateDetails();
+    await fethEstateDetails();
   }
 
-  Future<void> _fethEstateDetails() async {
+  Future<void> fethEstateDetails() async {
     emit(state.copyWith(status: EstateDetailsStatus.loading));
 
     final failureOrDetails = await _getEstateDetails();
