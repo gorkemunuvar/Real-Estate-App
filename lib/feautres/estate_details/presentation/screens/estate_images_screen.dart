@@ -39,13 +39,9 @@ class _ViewState extends State<_View> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        PageView.builder(
-          pageSnapping: true,
+        _ImagesPageView(
+          imageUrls: widget.imageUrls,
           onPageChanged: _onPageChanged,
-          itemCount: widget.imageUrls.length,
-          itemBuilder: (context, pageIndex) {
-            return Image.network(widget.imageUrls[pageIndex]);
-          },
         ),
         const Align(
           alignment: Alignment.topRight,
@@ -64,6 +60,30 @@ class _ViewState extends State<_View> {
 
   void _onPageChanged(int pageIndex) {
     setState(() => currentIndex = pageIndex);
+  }
+}
+
+typedef OnPageChanged = void Function(int pageIndex);
+
+class _ImagesPageView extends StatelessWidget {
+  const _ImagesPageView({
+    required this.imageUrls,
+    required this.onPageChanged,
+  });
+
+  final List<String> imageUrls;
+  final OnPageChanged onPageChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView.builder(
+      pageSnapping: true,
+      onPageChanged: onPageChanged,
+      itemCount: imageUrls.length,
+      itemBuilder: (context, pageIndex) {
+        return Image.network(imageUrls[pageIndex]);
+      },
+    );
   }
 }
 
