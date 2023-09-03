@@ -20,6 +20,7 @@ class EstateDetailsCubit extends Cubit<EstateDetailsState> {
   Future<void> _fethEstateDetails() async {
     emit(state.copyWith(status: EstateDetailsStatus.loading));
 
+    //TODO: Delete this line when API is impelemented.
     await Future.delayed(const Duration(seconds: 2));
 
     final failureOrDetails = await _getEstateDetails();
