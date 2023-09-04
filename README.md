@@ -1,16 +1,48 @@
-# real_estate_app
 
-A new Flutter project.
+# About
 
-## Getting Started
+This is a an application including some simple features such as:
+- Showing a real estate details
+- Showing images of the estate
+- Navigation to a random estate details
 
-This project is a starting point for a Flutter application.
+## Screen Record
 
-A few resources to get you started if this is your first Flutter project:
+## How to run
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+In order to run the project, run the commands below in order.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```flutter pub get```
+
+```flutter run```
+
+```dart run build_runner build --delete-conflicting-outputs```
+
+```flutter test```
+
+
+## Architecture
+
+In order to create isolated, testable and clean codebase I've levaraged from the idea of 
+[Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
+
+Therefore each concern is seperated by different layers.
+
+### Data Layer
+The data layer is responsible for retrieving and storing data. It is the only layer that interacts with external APIs or databases. Data sources and repository impelmentation are placed in this layer to communicate with the API. 
+
+### Domain Layer
+The domain layer is responsible for the business logic of the application. It defines the entities, value objects, and use cases of the application.
+
+
+### Application Layer
+The application layer is responsible for implementing the use cases of the application. It uses the domain layer to do this. In our case, we utilize from BLoCs to orchestrate business logic and presentation components.
+
+
+### Presentation Layer
+The presentation layer is responsible for displaying data to the user and handling user input. All the widgets and screens are placed in this layer.
+
+### UML Diagrams of Estate Details feature
+
+
+
