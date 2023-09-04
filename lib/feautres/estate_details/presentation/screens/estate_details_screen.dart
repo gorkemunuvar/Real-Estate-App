@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/injection/injection.dart';
 import '../../../common/common.dart';
 import '../../estate_details.dart';
-import 'cubit/estate_details_cubit.dart';
 
 class EstateDetailsScreen extends StatelessWidget {
   const EstateDetailsScreen({super.key});

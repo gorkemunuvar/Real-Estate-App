@@ -24,7 +24,7 @@ void main() {
     'fethEstateDetails() emits [loading, failure] when usecase returns Left',
     build: () => cubit,
     setUp: () => when(() => usecase()).thenAnswer((_) async => const Left(Failure())),
-    act: (_) => cubit.fethEstateDetails(),
+    act: (_) => cubit.fetchEstateDetails(),
     expect: () => [
       const EstateDetailsState(status: EstateDetailsStatus.loading),
       const EstateDetailsState(status: EstateDetailsStatus.failure),
@@ -35,7 +35,7 @@ void main() {
     'fethEstateDetails() emits [loading, success] when usecase returns Right',
     build: () => cubit,
     setUp: () => when(() => usecase()).thenAnswer((_) async => const Right(mockEstateDetails)),
-    act: (_) => cubit.fethEstateDetails(),
+    act: (_) => cubit.fetchEstateDetails(),
     expect: () => [
       const EstateDetailsState(status: EstateDetailsStatus.loading),
       const EstateDetailsState(status: EstateDetailsStatus.success, details: mockEstateDetails),

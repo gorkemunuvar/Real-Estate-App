@@ -19,6 +19,6 @@ class ShowRandomEstateButton extends StatelessWidget {
   }
 
   void _onPressed(BuildContext context) {
-    context.read<EstateDetailsCubit>().fethEstateDetails();
+    context.read<EstateDetailsCubit>().fetchEstateDetails();
   }
 }
