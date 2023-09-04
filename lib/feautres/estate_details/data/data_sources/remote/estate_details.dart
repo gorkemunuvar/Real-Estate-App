@@ -16,14 +16,14 @@ class EstateDetailsRemoteDataSource implements IEstateDetailsRemoteDataSource {
 
   @override
   Future<EstateDetailsModel> getEstateDetails() async {
-    final estateId = await _getRandomEstateId();
+    final estateId = await getRandomEstateId();
     final url = '${ApiConstants.baseUrl}/feeds/Aanbod.svc/json/detail/${ApiSecrets.apiKey}/koop/$estateId/';
 
     final json = await _httpClient.get(url);
     return EstateDetailsModel.fromJson(json);
   }
 
-  Future<String> _getRandomEstateId() async {
+  Future<String> getRandomEstateId() async {
     const city = 'amsterdam';
     const url = '${ApiConstants.baseUrl}/feeds/Aanbod.svc/json/${ApiSecrets.apiKey}/?type=koop&zo=/$city';
 
