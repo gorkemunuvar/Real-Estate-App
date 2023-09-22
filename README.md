@@ -8,6 +8,8 @@ This is a an application including some simple features such as:
 
 ## Screen Record
 
+https://github.com/gorkemunuvar/Real-Estate-App/assets/34106700/24746e1c-171d-4485-8ac8-c512778f863c
+
 ## How to run
 
 In order to run the project, run the commands below in order.
@@ -43,6 +45,8 @@ The application layer is responsible for implementing the use cases of the appli
 The presentation layer is responsible for displaying data to the user and handling user input. All the widgets and screens are placed in this layer.
 
 ### UML Diagrams of Estate Details feature
+
+![uml](https://github.com/gorkemunuvar/Real-Estate-App/assets/34106700/562cc91f-30a0-4098-a1b5-ee0c83d0431d)
 
 
 
