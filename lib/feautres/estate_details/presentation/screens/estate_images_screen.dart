@@ -93,10 +93,7 @@ class _ExitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {
-        AppLogger.wtf('Onpressed.');
-        Navigator.of(context).pop();
-      },
+      onPressed: () => Navigator.of(context).pop(),
       icon: const Icon(Icons.close, size: _size, color: AppColors.greyX11),
     );
   }

@@ -6,7 +6,9 @@ import '../logger/logger.dart';
 
 ///Initializes all dependencies and configurations.
 Future<void> initDependencies() async {
+  // Unneccesary in this case since there is no need to make a call to native code.
   WidgetsFlutterBinding.ensureInitialized();
+
   AppLogger.init();
   configureDependencies();
   Bloc.observer = FundaBlocObserver();
